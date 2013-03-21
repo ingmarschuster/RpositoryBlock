@@ -2,10 +2,10 @@
 <!DOCTYPE version SYSTEM "../../../lib/pkp/dtd/pluginVersion.dtd">
 
 <version>
-        <application>pidblock</application>
+        <application>rpositoryblock</application>
         <type>plugins.blocks</type>
-        <release>0.0.0.3</release>
-        <date>2013-02-16</date>
+        <release>0.0.0.4</release>
+        <date>2013-03-21</date>
         <lazy-load>1</lazy-load>
-        <class>PidBlockPlugin</class>
+        <class>RpositoryBlockPlugin</class>
 </version>

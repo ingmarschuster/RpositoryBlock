@@ -1,7 +1,7 @@
 <?php
 
-require_once('PidBlockPlugin.inc.php');
+require_once('RpositoryBlockPlugin.inc.php');
 
-return new PidBlockPlugin();
+return new RpositoryBlockPlugin();
 
 ?> 

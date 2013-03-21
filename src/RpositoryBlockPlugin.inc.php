@@ -1,7 +1,7 @@
 <?php
 import('lib.pkp.classes.plugins.BlockPlugin');
 
-class PidBlockPlugin extends BlockPlugin {
+class RpositoryBlockPlugin extends BlockPlugin {
     /**
     * Install default settings on journal creation.
     * @return string
@@ -15,14 +15,14 @@ class PidBlockPlugin extends BlockPlugin {
      * @return String
      */
     function getDisplayName() {
-            return "PidBlock";
+            return "RpositoryBlock";
     }
 
     /**
      * Get a description of the plugin.
      */
     function getDescription() {
-            return "PidBlock Plugin";
+            return "RpositoryBlock Plugin";
     }
     
     function curPageURL(){
