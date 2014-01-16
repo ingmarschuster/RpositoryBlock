@@ -49,26 +49,28 @@ class RpositoryBlockPlugin extends BlockPlugin {
         $articleId = NULL;
         
         if(preg_match($pattern , $context)){
-	    $templateMgr->assign('isArticleView', 1);
+    	    $templateMgr->assign('isArticleView', 1);
             $pos = strrpos($context , '/view/');
             $articleId = substr($context , $pos + 6);
             if($pos = strpos($articleId, '/')){
                 $articleId = substr($articleId, 0, $pos);
             }
+
+            if($articleId){
+                $pidv1 = $rpositoryDao->getPIDv1($articleId);
+                $pidv2 = $rpositoryDao->getPIDv2($articleId);
+            }
+        	$templateMgr->assign('pidv1', $pidv1);
+                $templateMgr->assign('pidv2', $pidv2);
+        	$templateMgr->assign('rpositoryBase', "/Rpository/src/contrib/");
+        	$filename = $rpositoryDao->getRPackageFile($articleId);
+        	//error_log("OJS - RpositoryBlockPlugin".$filename);
+        	$templateMgr->assign('fileName', $filename);
+        	$templateMgr->assign('packageName', str_replace('_1.0.tar.gz', '', $filename));
+
         } else {
-	    $templateMgr->assign('isArticleView', 0);
-	}
-        if($articleId){
-            $pidv1 = $rpositoryDao->getPIDv1($articleId);
-            $pidv2 = $rpositoryDao->getPIDv2($articleId);
-        }
-        $templateMgr->assign('pidv1', $pidv1);
-        $templateMgr->assign('pidv2', $pidv2);
-	$templateMgr->assign('rpositoryBase', "/Rpository/src/contrib/");
-	$filename = $rpositoryDao->getRPackageFile($articleId);
-	error_log("OJS - ".$filename);
-	$templateMgr->assign('fileName', $filename);
-	$templateMgr->assign('packageName', str_replace('_1.0.tar.gz', '', $filename));
+	        $templateMgr->assign('isArticleView', 0);
+	    }
         return parent::getContents($templateMgr);
     }
 
